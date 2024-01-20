@@ -1,13 +1,17 @@
 package consul.med.api.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import consul.med.api.medico.DadosCadastroMedico;
+import consul.med.api.medico.DadosListagemMedico;
 import consul.med.api.medico.Medico;
 import consul.med.api.medico.MedicoRepository;
 import jakarta.validation.Valid;
@@ -25,5 +29,12 @@ public class MedicoController {
 	public void cadastrar(@RequestBody @Valid DadosCadastroMedico dados) {
 		repository.save(new Medico(dados));
 	}
+	
+	@GetMapping
+	public List<DadosListagemMedico> listar(){
+		return repository.findAll().stream().map(DadosListagemMedico :: new).toList();
+	}
+	
+	
 	
 }

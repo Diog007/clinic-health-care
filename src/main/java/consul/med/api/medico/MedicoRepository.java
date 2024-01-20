@@ -2,6 +2,6 @@ package consul.med.api.medico;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MedicoRepository extends JpaRepository<Medico, Long>{
+public interface MedicoRepository extends JpaRepository<Medico, Long> {
 
 }
