@@ -31,7 +31,6 @@ public class MedicoController {
 	@Autowired
 	private MedicoRepository repository;
 
-	@SuppressWarnings("rawtypes")
 	@PostMapping
 	@Transactional
 	public ResponseEntity cadastrarMedico(@RequestBody @Valid DadosCadastroMedico dados,
@@ -67,5 +66,10 @@ public class MedicoController {
 
 		return ResponseEntity.noContent().build();
 	}
-
+	
+	@GetMapping("/{id}")
+	public ResponseEntity detalharMedico(@PathVariable Long id) {
+		var medico = repository.getReferenceById(id);
+		return ResponseEntity.ok(new DadosDetalhamentoMedico(medico));
+	}
 }
