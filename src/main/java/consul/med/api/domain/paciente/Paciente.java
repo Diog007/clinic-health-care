@@ -1,6 +1,6 @@
-package consul.med.api.paciente;
+package consul.med.api.domain.paciente;
 
-import consul.med.api.endereco.Endereco;
+import consul.med.api.domain.endereco.Endereco;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package consul.med.api.endereco;
+package consul.med.api.domain.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

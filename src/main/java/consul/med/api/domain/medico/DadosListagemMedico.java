@@ -1,4 +1,4 @@
-package consul.med.api.medico;
+package consul.med.api.domain.medico;
 
 public record DadosListagemMedico (
 		Long id,

@@ -1,6 +1,6 @@
-package consul.med.api.paciente;
+package consul.med.api.domain.paciente;
 
-import consul.med.api.endereco.Endereco;
+import consul.med.api.domain.endereco.Endereco;
 
 public record DadosDetalhamentoPaciente (Long id, String nome, String email, String telefone, String cpf, Endereco endereco){
 

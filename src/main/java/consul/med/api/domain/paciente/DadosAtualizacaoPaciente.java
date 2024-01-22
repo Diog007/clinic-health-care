@@ -1,6 +1,6 @@
-package consul.med.api.paciente;
+package consul.med.api.domain.paciente;
 
-import consul.med.api.endereco.DadosEndereco;
+import consul.med.api.domain.endereco.DadosEndereco;
 import jakarta.validation.constraints.NotNull;
 
 public record DadosAtualizacaoPaciente(

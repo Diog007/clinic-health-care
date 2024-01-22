@@ -1,4 +1,4 @@
-package consul.med.api.paciente;
+package consul.med.api.domain.paciente;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,4 +1,4 @@
-package consul.med.api.paciente;
+package consul.med.api.domain.paciente;
 
 public record DadosListagemPaciente(
 		Long id,
