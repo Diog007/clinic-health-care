@@ -40,7 +40,6 @@ public class PacienteController {
 		return ResponseEntity.created(uri).body(new DadosDetalhamentoPaciente(medico));
 	}
 	
-	
 	@GetMapping
 	public ResponseEntity<Page<DadosListagemPaciente>> listaPaciente(@PageableDefault(size = 10, sort = {"nome"})Pageable paginacao ){
 		var page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemPaciente :: new);
