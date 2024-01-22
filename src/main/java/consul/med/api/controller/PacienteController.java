@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import consul.med.api.paciente.DadosAtualizacaoPaciente;
 import consul.med.api.paciente.DadosCadastroPaciente;
+import consul.med.api.paciente.DadosDetalhamentoPaciente;
 import consul.med.api.paciente.DadosListagemPaciente;
 import consul.med.api.paciente.Paciente;
 import consul.med.api.paciente.PacienteRepository;
@@ -51,6 +52,12 @@ public class PacienteController {
 	public void excluirPaciente(@PathVariable Long id) {
 		var paciente = repository.getReferenceById(id);
 		paciente.excluir();
+	}
+	
+	@GetMapping("/{id}")
+	public DadosDetalhamentoPaciente detalharPaciente(@PathVariable Long id) {
+		var paciente = repository.getReferenceById(id);
+		return new DadosDetalhamentoPaciente(paciente);
 	}
 	
 	
