@@ -47,12 +47,11 @@ public class TratadorDeErros {
 	public ResponseEntity tratarErroAcessoNegado() {
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado");
 	}
-	
+
 	@ExceptionHandler(Exception.class)
-    public ResponseEntity tratarErro500(Exception ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro: " +ex.getLocalizedMessage());
-    }
-	
+	public ResponseEntity tratarErro500(Exception ex) {
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro: " + ex.getLocalizedMessage());
+	}
 
 	private record DadosErroValidacao(String campo, String mensagem) {
 
