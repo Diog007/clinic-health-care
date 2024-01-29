@@ -1,5 +1,8 @@
 package consul.med.api.infra.exception;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.naming.AuthenticationException;
 
 import org.springframework.http.HttpStatus;
@@ -24,9 +27,10 @@ public class TratadorDeErros {
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity tratarError400(MethodArgumentNotValidException ex) {
-		var erros = ex.getFieldErrors();
-		return ResponseEntity.badRequest().body(erros.stream().map(DadosErroValidacao::new).toList());
+	    List<FieldError> erros = ex.getFieldErrors();
+	    return ResponseEntity.badRequest().body(erros.stream().map(DadosErroValidacao::new).toList());
 	}
+
 
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public ResponseEntity tratarErro400(HttpMessageNotReadableException ex) {
