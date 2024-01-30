@@ -4,7 +4,7 @@ import consul.med.api.domain.ValidacaoException;
 import consul.med.api.domain.consulta.DadosAgendamentoConsulta;
 import consul.med.api.domain.medico.MedicoRepository;
 
-public class ValidadorMedicoAtivo {
+public class ValidadorMedicoAtivo implements ValidadorAgendamentoDeConsulta{
 	
 	private MedicoRepository repository;
 	

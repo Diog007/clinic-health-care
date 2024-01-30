@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import consul.med.api.domain.ValidacaoException;
 import consul.med.api.domain.consulta.DadosAgendamentoConsulta;
 
-public class ValidadorHorarioAntecedencia {
+public class ValidadorHorarioAntecedencia implements ValidadorAgendamentoDeConsulta{
 	
 	public void validar(DadosAgendamentoConsulta dados) {
 		var dataConsulta = dados.data();
