@@ -3,9 +3,12 @@ package consul.med.api.domain.consulta.validacoes;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+import org.springframework.stereotype.Component;
+
 import consul.med.api.domain.ValidacaoException;
 import consul.med.api.domain.consulta.DadosAgendamentoConsulta;
 
+@Component
 public class ValidadorHorarioAntecedencia implements ValidadorAgendamentoDeConsulta{
 	
 	public void validar(DadosAgendamentoConsulta dados) {
