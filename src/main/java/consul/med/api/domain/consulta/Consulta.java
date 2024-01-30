@@ -19,10 +19,12 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Table(name = "consultas")
 @Entity(name = "Consulta")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -41,13 +43,13 @@ public class Consulta {
 	private Paciente paciente;
 
 	private LocalDateTime data;
+	
+	private Boolean cancelada;
 
 	@Column(name = "motivo_cancelamento")
 	@Enumerated(EnumType.STRING)
 	private MotivoCancelamento motivoCancelamento;
 
-	public void cancelar(MotivoCancelamento motivo) {
-		this.motivoCancelamento = motivo;
-	}
+
 
 }

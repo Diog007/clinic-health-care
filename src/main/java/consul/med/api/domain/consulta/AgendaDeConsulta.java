@@ -1,5 +1,7 @@
 package consul.med.api.domain.consulta;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,7 @@ public class AgendaDeConsulta {
 		
 		var paciente = pacienteRepository.getReferenceById(dados.idPaciente());
 		var medico = escolherMedico(dados);
-		var consulta = new Consulta(null, medico, paciente, dados.data(), null);
+		var consulta = new Consulta(null, medico, paciente, dados.data(), null, null);
 		consultaRepository.save(consulta);
 	}
 
@@ -50,12 +52,20 @@ public class AgendaDeConsulta {
 		return medicoRepository.escolherMedicoAleatorioLivreNaData(dados.especialidade(), dados.data());
 	}
 
-	public void cancelar(DadosCancelamentoConsulta dados) {
+	public Consulta cancelar(DadosCancelamentoConsulta dados) {
 		if (!consultaRepository.existsById(dados.idConsulta())) {
 			throw new ValidacaoException("Id da consulta informado não existe!");
 		}
 		var consulta = consultaRepository.getReferenceById(dados.idConsulta());
-		consulta.cancelar(dados.motivo());
+		LocalDateTime dataCancelamento = LocalDateTime.now();
+		
+		if(dataCancelamento.plusDays(1).isAfter(consulta.getData())) {
+			throw new ValidacaoException("A consulta só pode ser cancelada com no minimo 24h de antecedencia");
+		}
+		consulta.setCancelada(true);
+		consulta.setMotivoCancelamento(dados.motivo());
+		return consulta;
+		
 	}
 
 }
