@@ -14,7 +14,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,13 +21,10 @@ import java.util.List;
 public class DataInitializer implements CommandLineRunner {
     @Autowired
     private MedicoRepository medicoRepository;
-
     @Autowired
     private PacienteRepository pacienteRepository;
-
     @Autowired
     private UsuarioRepository usuarioRepository;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -71,11 +67,11 @@ public class DataInitializer implements CommandLineRunner {
         DadosEndereco endPac5 = new DadosEndereco("Rua Harmonia", "Vila Madalena", "05435000", "São Paulo", "SP", "Complemento 10", "708");
         Endereco enderecoPac5 = new Endereco(endPac5);
 
-        Medico med1 = new Medico(null, "Carolina Sousa", "carolina.sousa.medi.pro", "96884/SP", "11988084444", Especialidade.CARDIOLOGIA, enderecoMed1, true);
-        Medico med2 = new Medico(null, "José Antonio", "jose.antonio.medi.pro", "58745/SP", "11999685522", Especialidade.CARDIOLOGIA, enderecoMed2, true);
-        Medico med3 = new Medico(null, "Sofia Pereira", "sofia.pereira.medi.pro", "85415/SP", "11986682233", Especialidade.GINECOLOGIA, enderecoMed3, true);
-        Medico med4 = new Medico(null, "Isabel Tavares", "isabel.tavares.medi.pro", "58455/SP", "11988884444", Especialidade.ORTOPEDIA, enderecoMed4, true);
-        Medico med5 = new Medico(null, "Miguel Ferreira", "miguel.ferreira.medi.pro", "45874/SP", "119899884444", Especialidade.ORTOPEDIA, enderecoMed5, true);
+        Medico med1 = new Medico(null, "Carolina Sousa", "carolina.sousa.medi.pro",  "11988084444","96884/SP", Especialidade.CARDIOLOGIA, enderecoMed1, true);
+        Medico med2 = new Medico(null, "José Antonio", "jose.antonio.medi.pro",  "11999685522","58745/SP", Especialidade.CARDIOLOGIA, enderecoMed2, true);
+        Medico med3 = new Medico(null, "Sofia Pereira", "sofia.pereira.medi.pro", "11986682233","85415/SP", Especialidade.GINECOLOGIA, enderecoMed3, true);
+        Medico med4 = new Medico(null, "Isabel Tavares", "isabel.tavares.medi.pro", "11988884444", "58455/SP", Especialidade.ORTOPEDIA, enderecoMed4, true);
+        Medico med5 = new Medico(null, "Miguel Ferreira", "miguel.ferreira.medi.pro", "119899884444", "45874/SP", Especialidade.ORTOPEDIA, enderecoMed5, true);
         List<Medico> medicos = Arrays.asList(med1, med2, med3, med4, med5);
         List<Medico> saveMedicos = medicoRepository.saveAll(medicos);
 
