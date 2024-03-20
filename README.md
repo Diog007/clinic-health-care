@@ -56,6 +56,25 @@ O Clinic health care oferece uma variedade de funcionalidades, incluindo:
 - Gerenciamento completo de médicos (CRUD);
 - Gerenciamento completo de pacientes (CRUD).
 
+## 📅 Regras de Negócio do Agendamento de Consultas
+
+Antes de agendar uma consulta, a API segue um conjunto de regras de negócio para garantir a integridade e a eficiência do processo. Abaixo estão as regras aplicadas:
+
+1. **Validador de Médico com Outra Consulta no Mesmo Horário:**
+   - Verifica se o médico selecionado já possui outra consulta agendada para o mesmo horário. O agendamento é bloqueado se houver conflito de horário.
+2. **Validador de Horário de Antecedência:**
+   - Grante que as consultas sejam agendadas com no mínimo 30 minutos de antecedência. O agendamento é bloqueado se o horário selecionado for inferior ao mínimo configurado.
+3. **Validador de Horário de Funcionamento da Clínica:**
+   - As consultas só podem ser agendadas dentro do horário de funcionamento da clínica. O agendamento é bloqueado se o horário selecionado estiver fora do horário de funcionamento.
+4. **Validador de Médico Ativo:**
+   - Verifica se o médico selecionado está ativo no sistema. O agendamento é bloqueado se o médico estiver inativo.
+5. **Validador de Paciente Ativo:**
+   - Verifica se o paciente está ativo no sistema. O agendamento é bloqueado se o paciente estiver inativo.
+6. **Validador de Paciente Sem Outra Consulta no Dia:**
+   - Um paciente só pode ter uma consulta agendada no mesmo dia. O agendamento é bloqueado se o paciente já tiver uma consulta marcada para o dia selecionado.
+
+Estas regras garantem um agendamento de consultas organizado e eficiente, melhorando a experiência tanto para os médicos quanto para os pacientes.
+
 ## 📚 Como rodar o Projeto
 Existem duas maneiras principais de começar com o Clinic Med:
 1. [Baixe o ZIP do projeto](https://github.com/Diog007/clinic-health-care/archive/refs/heads/main.zip) e abra-o em uma IDE de sua escolha.
